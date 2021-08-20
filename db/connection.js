@@ -6,10 +6,10 @@ const config = {
   useUnifiedTopology: true,
   useCreateIndex: true,
 };
-mongoose.connect(DB_URI, config);
+mongoose.connect(TRAVEL_URI, config);
 
 const db = mongoose.connection;
-db.on("connect", () => console.log(`🤘🏼 Mongo is connected!`));
+db.on("connect", () => console.log(`👍🏼 Mongo is connected!`));
 db.on("disconnect", () => console.log(`👋🏼 Mongo is disconnected.`));
 db.on("error", (err) => console.log(`❌ Error connecting ${err}`));
 
