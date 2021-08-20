@@ -7,16 +7,16 @@ const app = express();
 const { PORT } = process.env || 3000;
 
 // Import routers
-const destinationRouter = require("./controllers/destination");
+const tripDetailsRouter = require("./controllers/tripDetails");
 
 app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 
 // Test if server is working
-app.get("/", (req, res) => res.send(`🤘🏼 Server is working!`));
+app.get("/", (req, res) => res.send(`👍🏼  Server is working!`));
 
 // Routes
-app.use("/destination", destinationRouter);
+app.use("/tripDetails", tripDetailsRouter);
 
 app.listen(PORT, () => console.log(`👍🏼 Server is running on port: ${PORT}`));
