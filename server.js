@@ -7,7 +7,7 @@ const app = express();
 const { PORT } = process.env || 3000;
 
 // Import routers
-const tripDetailsRouter = require("./controllers/tripDetails");
+const TripDetailsRouter = require("./controllers/tripDetails");
 const UserRouter = require("./controllers/User");
 const AgentRouter = require("./controllers/agent");
 
@@ -19,7 +19,7 @@ app.use(morgan("tiny"));
 app.get("/", (req, res) => res.send(`👍🏼  Server is working!`));
 
 // Routes
-app.use("/tripDetails", tripDetailsRouter);
+app.use("/tripDetails", TripDetailsRouter);
 app.use("/user", UserRouter);
 app.use("/agent", AgentRouter);
 
