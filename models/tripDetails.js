@@ -6,9 +6,9 @@ const TripDetailsSchema = new Schema({
   description: { type: String, required: true },
   vehicle: String,
   hotel: String,
-  location: [{ type: Number }],
+  location: [{ type: String }],
   contactInfo: [{ type: String }],
-  payment: [],
+  payment: String,
 });
 
 const TripDetails = model("TripDetails", TripDetailsSchema);
