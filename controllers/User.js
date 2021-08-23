@@ -9,6 +9,11 @@ const router = Router(); // create router to create route bundle
 //DESTRUCTURE ENV VARIABLES WITH DEFAULTS
 const { SECRET = "secret" } = process.env;
 
+// Index route
+router.get("/", async (req, res) => {
+  res.json(await User.find({}).catch((err) => res.status(400).json(err)));
+});
+
 // Signup route to create a new user
 router.post("/signup", async (req, res) => {
   try {
