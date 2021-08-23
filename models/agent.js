@@ -8,7 +8,7 @@ const AgentSchema = new Schema({
   contactInfo: [
     {
       email: String,
-      github: String,
+      linkedIn: String,
       website: String,
     },
   ],
