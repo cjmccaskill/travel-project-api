@@ -10,6 +10,15 @@ router.get("/", async (req, res) => {
   );
 });
 
+// Find by id route
+router.get("/:id", async (req, res) => {
+  res.json(
+    await TripDetails.findById(req.params.id).catch((err) =>
+      res.status(400).json(err)
+    )
+  );
+});
+
 // Create route
 router.post("/", async (req, res) => {
   res.json(
