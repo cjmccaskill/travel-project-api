@@ -5,12 +5,9 @@ const AgentSchema = new Schema({
   name: { type: String, required: true },
   bio: { type: String, required: true },
   packages: [],
-  contactInfo:
-    {
-      email: String,
-      linkedIn: String,
-      website: String,
-    },
+  email: String,
+  linkedIn: String,
+  website: String,
 });
 
 const Agent = model("Agent", AgentSchema);
