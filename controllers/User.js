@@ -1,6 +1,6 @@
 require("dotenv").config(); // load .env variables
 const { Router } = require("express"); // import router from express
-const User = require("../models/user"); // import user model
+const User = require("../models/User"); // import user model
 const bcrypt = require("bcryptjs"); // import bcrypt to hash passwords
 const jwt = require("jsonwebtoken"); // import jwt to sign tokens
 
