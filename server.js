@@ -19,7 +19,7 @@ app.use(morgan("tiny"));
 app.get("/", (req, res) => res.send(`👍🏼  Server is working!`));
 
 // Routes
-app.use("/tripDetails", TripDetailsRouter);
+// app.use("/tripDetails", TripDetailsRouter);
 app.use("/user", UserRouter);
 app.use("/agent", AgentRouter);
 
