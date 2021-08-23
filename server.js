@@ -8,7 +8,7 @@ const { PORT } = process.env || 3000;
 
 // Import routers
 const TripDetailsRouter = require("./controllers/tripDetails");
-const UserRouter = require("./controllers/user");
+const UserRouter = require("./controllers/User");
 const AgentRouter = require("./controllers/agent");
 
 app.use(cors());
