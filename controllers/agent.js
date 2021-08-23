@@ -8,6 +8,15 @@ router.get("/", async (req, res) => {
   res.json(await Agent.find({}).catch((err) => res.status(400).json(err)));
 });
 
+// Find by id route
+router.get("/:id", async (req, res) => {
+  res.json(
+    await Agent.findById(req.params.id).catch((err) =>
+      res.status(400).json(err)
+    )
+  );
+});
+
 // Create route
 router.post("/", async (req, res) => {
   res.json(
