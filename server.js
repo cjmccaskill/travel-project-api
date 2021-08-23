@@ -7,9 +7,7 @@ const app = express();
 const { PORT } = process.env || 3000;
 
 // Import routers
-const TripDetailsRouter = require("./controllers/tripDetails");
-const UserRouter = require("./controllers/user");
-const AgentRouter = require("./controllers/agent");
+const tripDetailsRouter = require("./controllers/tripDetails");
 
 app.use(cors());
 app.use(express.json());
@@ -22,5 +20,6 @@ app.get("/", (req, res) => res.send(`👍🏼  Server is working!`));
 // app.use("/tripDetails", TripDetailsRouter);
 app.use("/user", UserRouter);
 app.use("/agent", AgentRouter);
+
 
 app.listen(PORT, () => console.log(`👍🏼 Server is running on port: ${PORT}`));
