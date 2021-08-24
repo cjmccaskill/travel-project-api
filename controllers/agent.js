@@ -5,7 +5,11 @@ const router = Router();
 
 // Index route
 router.get("/", async (req, res) => {
-  res.json(await Agent.find({}).catch((err) => res.status(400).json(err)));
+  res.json(
+    await Agent.find({})
+      .populate("packages")
+      .catch((err) => res.status(400).json(err))
+  );
 });
 
 // Find by id route
