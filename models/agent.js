@@ -4,7 +4,7 @@ const AgentSchema = new Schema({
   img: String,
   name: { type: String, required: true },
   bio: { type: String, required: true },
-  packages: [],
+  packages: [{ref: "TripDetails", type: Schema.Types.ObjectId}],
   email: String,
   linkedIn: String,
   website: String,

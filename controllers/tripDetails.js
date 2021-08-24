@@ -1,12 +1,15 @@
 require("dotenv").config();
 const { Router } = require("express");
 const TripDetails = require("../models/tripDetails");
+const Agent = require("../models/agent");
 const router = Router();
 
 // Index route
 router.get("/", async (req, res) => {
   res.json(
-    await TripDetails.find({}).catch((err) => res.status(400).json(err))
+    await TripDetails.find({})
+      .populate("agentInfo")
+      .catch((err) => res.status(400).json(err))
   );
 });
 
@@ -25,6 +28,7 @@ router.post("/", async (req, res) => {
     await TripDetails.create(req.body).catch((err) => res.status(400).json(err))
   );
 });
+
 // Update route
 router.put("/:id", async (req, res) => {
   res.json(
@@ -33,6 +37,22 @@ router.put("/:id", async (req, res) => {
     }).catch((err) => res.status(400).json(err))
   );
 });
+
+// linking agents to packages
+router.get("/relate/:agentId/:tripId", async (req, res) => {
+  const { agentId, tripId } = req.params;
+  const agent = await Agent.findById(agentId);
+  const trip = await TripDetails.findById(tripId);
+  agent.packages.push(trip);
+  trip.agentInfo = agent;
+  agent.save();
+  trip.save();
+  res.json({
+    agent: agent.populate("packages"),
+    trip: trip.populate("agentInfo"),
+  });
+});
+
 // Destroy route
 router.delete("/:id", async (req, res) => {
   res.json(
