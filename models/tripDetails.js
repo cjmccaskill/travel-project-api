@@ -9,6 +9,7 @@ const TripDetailsSchema = new Schema({
   location: [{ type: String }],
   agentInfo: { ref: "Agent", type: Schema.Types.ObjectId },
   // agentInfo contains the info from the agent schema
+  photos: [{ type: String }],
   payment: String,
 });
 
