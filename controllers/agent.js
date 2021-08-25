@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 // Find by id route
 router.get("/:id", async (req, res) => {
   res.json(
-    await Agent.findById(req.params.id).catch((err) =>
+    await Agent.findById(req.params.id).populate("packages").catch((err) =>
       res.status(400).json(err)
     )
   );
