@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 // Find by id route
 router.get("/:id", async (req, res) => {
   res.json(
-    await TripDetails.findById(req.params.id).catch((err) =>
+    await TripDetails.findById(req.params.id).populate("agentInfo").catch((err) =>
       res.status(400).json(err)
     )
   );
@@ -39,19 +39,22 @@ router.put("/:id", async (req, res) => {
 });
 
 // linking agents to packages
-router.get("/relate/:agentId/:tripId", async (req, res) => {
-  const { agentId, tripId } = req.params;
-  const agent = await Agent.findById(agentId);
-  const trip = await TripDetails.findById(tripId);
-  agent.packages.push(trip);
-  trip.agentInfo = agent;
-  agent.save();
-  trip.save();
-  res.json({
-    agent: agent.populate("packages"),
-    trip: trip.populate("agentInfo"),
-  });
-});
+// router.get("/relate/:agentId/:tripId", async (req, res) => {
+//   const { agentId, tripId } = req.params;
+//   // const agent = await Agent.findById(agentId);
+//   const trip = await TripDetails.findById(tripId).populate("agentInfo");
+//   // agent.packages.push(trip);
+//   // trip.agentInfo = agent;
+//   // agent.save();
+//   // trip.save();
+//   // res.json({
+//   //   agent: agent.populate("packages"),
+//   //   trip: trip.populate("agentInfo"),
+//   // });
+//   res.json({
+//     trip,
+//   });
+// });
 
 // Destroy route
 router.delete("/:id", async (req, res) => {
