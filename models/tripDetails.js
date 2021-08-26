@@ -7,7 +7,7 @@ const TripDetailsSchema = new Schema({
   vehicle: String,
   hotel: String,
   dates: String,
-  location: [{ type: String }],
+  location: String,
   agentInfo: { ref: "Agent", type: Schema.Types.ObjectId },
   // agentInfo contains the info from the agent schema
   photos: [{ type: String }],

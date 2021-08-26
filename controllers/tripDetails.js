@@ -38,24 +38,6 @@ router.put("/:id", async (req, res) => {
   );
 });
 
-// linking agents to packages
-// router.get("/relate/:agentId/:tripId", async (req, res) => {
-//   const { agentId, tripId } = req.params;
-//   // const agent = await Agent.findById(agentId);
-//   const trip = await TripDetails.findById(tripId).populate("agentInfo");
-//   // agent.packages.push(trip);
-//   // trip.agentInfo = agent;
-//   // agent.save();
-//   // trip.save();
-//   // res.json({
-//   //   agent: agent.populate("packages"),
-//   //   trip: trip.populate("agentInfo"),
-//   // });
-//   res.json({
-//     trip,
-//   });
-// });
-
 // Destroy route
 router.delete("/:id", async (req, res) => {
   res.json(
